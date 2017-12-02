@@ -1,0 +1,25 @@
+{
+  "name": "weekend4_gallery",
+  "version": "1.0.0",
+  "description": "Gallery Project for Prime Digital Academy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandonyapel/Weekend4_Gallery.git"
+  },
+  "author": "Brandon Yapel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brandonyapel/Weekend4_Gallery/issues"
+  },
+  "homepage": "https://github.com/brandonyapel/Weekend4_Gallery#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "bootstrap": "^3.3.7",
+    "express": "^4.16.2",
+    "pg": "^7.4.0"
+  }
+}
