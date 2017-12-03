@@ -24,10 +24,13 @@
         <div class="row text-center text-lg-left">
 
             <div class="col-lg-3 col-md-4 col-xs-6" ng-repeat="videoIMG in vm.playlist.data.items">
-
-                <img ng-click="" name="{{videoIMG.id}}" class="img-fluid img-thumbnail" src="{{videoIMG.snippet.thumbnails.high.url}}" alt="images/Failure.gif">
-                <label for="{{videoIMG.id}}">{{videoIMG.snippet.title}}</label>
-                <label>Show Details: <input type="checkbox" ng-model="checked" ng-init="checked=false" /></label><br/>
+                <div class="thingy">
+                    <label for="{{videoIMG.id}}">{{videoIMG.snippet.title}}</label>
+                    <img ng-click="" name="{{videoIMG.id}}" class="img-fluid img-thumbnail" src="{{videoIMG.snippet.thumbnails.high.url}}" alt="images/Failure.gif">
+                    <label>Show Details:
+                        <input type="checkbox" ng-model="checked" ng-init="checked=false" />
+                    </label>
+                </div>
                 <div ng-if="checked" class="animate-if">
                     <div>
                         <a href="{{'https://www.youtube.com/embed/'+videoIMG.snippet.resourceId.videoId}}">{{videoIMG.snippet.title}}</a>
