@@ -10,19 +10,57 @@
     <link rel="stylesheet" href="styles/styles.css">
     <script src="vendors/angular.js"></script>
     <script src="scripts/client.js"></script>
+    <script src="https://apis.google.com/js/client.js"></script>
 </head>
 
 <body ng-controller="GalleryController as vm">
-    <h1>Gallery</h1>
+
+
+    <div class="container-fluid">
+        <h1>Gallery</h1>
+    </div>
+
     <div class="container">
         <div class="row text-center text-lg-left">
 
-            <div class="col-lg-3 col-md-4 col-xs-6">
-                <a href="images/Failure.gif" class="d-block mb-4 h-100">
-                    <img class="img-fluid img-thumbnail" src="images/Failure.gif" alt="">
-                </a>
+            <div class="col-lg-3 col-md-4 col-xs-6" ng-repeat="videoIMG in vm.playlist.data.items">
+
+                <img ng-click="" name="{{videoIMG.id}}" class="img-fluid img-thumbnail" src="{{videoIMG.snippet.thumbnails.high.url}}" alt="images/Failure.gif">
+                <label for="{{videoIMG.id}}">{{videoIMG.snippet.title}}</label>
+                <label>Show Details: <input type="checkbox" ng-model="checked" ng-init="checked=false" /></label><br/>
+                <div ng-if="checked" class="animate-if">
+                    <div>
+                        <a href="{{'https://www.youtube.com/embed/'+videoIMG.snippet.resourceId.videoId}}">{{videoIMG.snippet.title}}</a>
+                        <img name="{{'info'+videoIMG.id}}" class="img-fluid img-thumbnail" src="{{videoIMG.snippet.thumbnails.high.url}}" alt="images/Failure.gif">
+                        <label for="{{'info'+videoIMG.id}}">Views:</label>
+                        <br>
+                        <label for="{{'info'+videoIMG.id}}">likes:</label>
+                        <br>
+                        <label for="description">Description</label>
+                        <div name='description'>
+                            <p>{{videoIMG.snippet.description}}</p>
+                        </div>
+                        <label for="comments">Comments</label>
+                        <div name='comments'>
+                            <table class="thead-dark">
+                                <thead>
+                                    <tr>
+                                        <th>Comment</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Awesome Video!!!!</td>
+                                        <td>11/12/2017</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
+
         </div>
     </div>
 </body>

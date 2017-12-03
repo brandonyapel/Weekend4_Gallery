@@ -6,3 +6,8 @@ body {
     background-color: white;
     height: 100%;
 }
+
+.container-fluid {
+    background-color: grey;
+    height: 30%;
+}
