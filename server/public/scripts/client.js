@@ -18,8 +18,5 @@ myApp.controller('GalleryController', ['$http', function ($http) {
 
     self.getPlaylist();
 
-    self.toggleInformation = function (youtubeId){
-        self.playlist.data.items[0].show=false;
-    }
  
 }]);
