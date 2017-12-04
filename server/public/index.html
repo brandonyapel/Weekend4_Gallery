@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gallery</title>
-    <link rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="styles/styles.css">
+
     <script src="vendors/angular.js"></script>
     <script src="scripts/client.js"></script>
     <script src="https://apis.google.com/js/client.js"></script>
@@ -23,29 +25,39 @@
     <div class="container">
         <div class="row text-center text-lg-left">
 
-            <div class="col-lg-3 col-md-4 col-xs-6" ng-repeat="videoIMG in vm.playlist.data.items">
+            <div class="col-lg-3 col-md-4 col-xs-6" ng-repeat="video in vm.repeatData">
                 <div class="thingy">
-                    <label for="{{videoIMG.id}}">{{videoIMG.snippet.title}}</label>
-                    <img ng-click="" name="{{videoIMG.id}}" class="img-fluid img-thumbnail" src="{{videoIMG.snippet.thumbnails.high.url}}" alt="images/Failure.gif">
+                    <label for="{{video.youtubeData.id}">{{video.localData.name}}</label>
+                    <img ng-click="" name="{{video.youtubeData.id}}" class="img-fluid img-thumbnail" src="{{video.youtubeData.snippet.thumbnails.high.url}}"
+                        alt="images/Failure.gif">
                     <label>Show Details:
-                        <input type="checkbox" ng-model="checked" ng-init="checked=false" />
+                        <input type="checkbox" ng-model="video.localData.display" ng-init="checked=false" />
                     </label>
                 </div>
                 <br>
-                <div ng-if="checked" class="animate-if">
+                <div ng-if="video.localData.display" class="animate-if">
+                        <input type="checkbox" ng-model="video.localData.display" ng-init="checked=false" />
                     <div>
-                        <a href="{{'https://www.youtube.com/embed/'+videoIMG.snippet.resourceId.videoId}}">{{videoIMG.snippet.title}}</a>
-                        <img name="{{'info'+videoIMG.id}}" class="img-fluid img-thumbnail" src="{{videoIMG.snippet.thumbnails.high.url}}" alt="images/Failure.gif">
-                        <label for="{{'info'+videoIMG.id}}">Views:</label>
+                        <a  href="{{'https://www.youtube.com/embed/'+video.youtubeData.snippet.resourceId.videoId}}">{{video.localData.name}}</a>
+                        <!-- <button type="button" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle floatRight"></span>
+                        </button> -->
                         <br>
-                        <label for="{{'info'+videoIMG.id}}">likes:</label>
+                        <img name="{{'info'+video.youtubeData.id}}" class="img-fluid img-thumbnail" src="{{video.youtubeData.snippet.thumbnails.high.url}}"
+                            alt="images/Failure.gif">
+                        <br>
+                        <label for="{{'info'+video.youtubeData.id}}">Views:{{video.localData.viewcount}}</label>
+                        <br>
+                        <label for="{{'info'+video.youtubeData.id}}">
+                            <button ng-click="vm.addLike(video.localData.id)" type="button" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-thumbs-up"></span> Like
+                            </button>{{video.localData.likes}}</label>
                         <br>
                         <label for="description">Description</label>
                         <div name='description'>
-                            <p>{{videoIMG.snippet.description}}</p>
+                            <p>{{video.localData.description}}</p>
                         </div>
-                        <label for="comments">Comments</label>
-                        <div name='comments'>
+                        <div>
                             <table class="thead-dark">
                                 <thead>
                                     <tr>

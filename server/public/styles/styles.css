@@ -16,6 +16,13 @@ body {
     background:white;
     border:1px solid black;
     padding:10px;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 30%;
+    top: 30%;
+    width: 50%; /* Full width */
+    height: 50%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
   }
   
   .animate-if.ng-enter, .animate-if.ng-leave {
@@ -33,5 +40,9 @@ body {
   }
 
   .thingy{
-      height:400px;
+      height:300px;
+  }
+
+  .floatRight {
+      float: right;
   }

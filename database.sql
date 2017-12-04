@@ -1,11 +1,11 @@
--- database name gallery
+--database gallery
 
 CREATE TABLE videos (
 id SERIAL PRIMARY KEY,
-youtube_id VARCHAR(1000),
+youtube_url VARCHAR(1000),
 name VARCHAR(30),
-description VARCHAR(1000),
-transcript VARCHAR(1000),
+description VARCHAR(10000),
+display boolean DEFAULT false,
 viewcount INT,
 likes INT);
 
@@ -15,17 +15,27 @@ timestamp TIMESTAMP,
 comment VARCHAR(1000), 
 videos_id INT);
 
-INSERT INTO videos (youtube_id,"name",description,transcript,likes,viewcount)
+INSERT INTO videos (youtube_url,"name",description,likes,viewcount)
 VALUES
-('UEx5Z0xuZ0FjbUJOeU5iaThMdXlOSE1DdTVxR0luZFlXOS41NkI0NEY2RDEwNTU3Q0M2','Henry V:St. Crispins Speech','null for now','null for now',100,100),
-('UEx5Z0xuZ0FjbUJOeU5iaThMdXlOSE1DdTVxR0luZFlXOS4yODlGNEE0NkRGMEEzMEQy','Theoden:Ride of the Rohirrim','null for now','null for now',100,100),
-('UEx5Z0xuZ0FjbUJOeU5iaThMdXlOSE1DdTVxR0luZFlXOS4wMTcyMDhGQUE4NTIzM0Y5','Aragorn:Not This Day','null for now','null for now',100,100),
-('UEx5Z0xuZ0FjbUJOeU5iaThMdXlOSE1DdTVxR0luZFlXOS41MjE1MkI0OTQ2QzJGNzNG','William Wallace Freedom Speech','null for now','null for now',100,100),
-('UEx5Z0xuZ0FjbUJOeU5iaThMdXlOSE1DdTVxR0luZFlXOS4wOTA3OTZBNzVEMTUzOTMy','Independence Day Speech','null for now','null for now',100,100),
-('UEx5Z0xuZ0FjbUJOeU5iaThMdXlOSE1DdTVxR0luZFlXOS4xMkVGQjNCMUM1N0RFNEUx','Rocky Balboa Winning Speech','null for now','null for now',100,100),
-('UEx5Z0xuZ0FjbUJOeU5iaThMdXlOSE1DdTVxR0luZFlXOS41MzJCQjBCNDIyRkJDN0VD','Herb Brooks Miracle Speech','null for now','null for now',100,100),
-('UEx5Z0xuZ0FjbUJOeU5iaThMdXlOSE1DdTVxR0luZFlXOS5DQUNERDQ2NkIzRUQxNTY1','Any Given Sunday Speech','null for now','null for now',100,100),
-('UEx5Z0xuZ0FjbUJOeU5iaThMdXlOSE1DdTVxR0luZFlXOS45NDk1REZENzhEMzU5MDQz','Scent of A Woman Speech','null for now','null for now',100,100),
-('UEx5Z0xuZ0FjbUJOeU5iaThMdXlOSE1DdTVxR0luZFlXOS5GNjNDRDREMDQxOThCMDQ2','Carpe Diem Speech','null for now','null for now',100,100),
-('UEx5Z0xuZ0FjbUJOeU5iaThMdXlOSE1DdTVxR0luZFlXOS40NzZCMERDMjVEN0RFRThB','Rudy Regret Speech','null for now','null for now',100,100),
-('UEx5Z0xuZ0FjbUJOeU5iaThMdXlOSE1DdTVxR0luZFlXOS5EMEEwRUY5M0RDRTU3NDJC','Busy Living or Dying Shawshank','null for now','null for now',100,100);
+('https://www.youtube.com/embed/bvFHRNGYfuo','Henry V:St. Crispins Speech','We few, we happy few, we band of brothers; For he to-day that sheds his blood with me Shall be my brother; be he neer so vile, This day shall gentle his condition; And gentlemen in England now a-bed Shall think themselves accursd they were not here, And hold their manhoods cheap whiles any speaks That fought with us upon Saint Crispins day.
+',100,100),
+('https://www.youtube.com/embed/EmTz7EAYLrs','Theoden:Ride of the Rohirrim','Arise, arise, Riders of Théoden Fell deeds awake: fire and slaughter! Spear shall be shaken, shield be splintered, A sword-day, a red day, ere the sun rises! Ride now, ride now! Ride to Gondor!
+',100,100),
+('https://www.youtube.com/embed/SwMUY5ro5Xo','Aragorn:Not This Day','Sons of Gondor, of Rohan, my brothers, I see in your eyes the same fear that would take the heart of me. A day may come when the courage of men fails, when we forsake our friends and break all bonds of fellowship, but it is not this day. An hour of wolves and shattered shields, when the age of men comes crashing down, but it is not this day! This day we fight!! By all that you hold dear on this good Earth,I bid you stand, Men of the West!!!
+',100,100),
+('https://www.youtube.com/embed/lEOOZDbMrgE','William Wallace Freedom Speech','Wallace: Sons of Scotland, I am William Wallace. Young soldier: William Wallace is 7 feet tall. Wallace: Yes, I have heard. Kills men by the hundreds, and if he were here he would consume the English with fireballs from his eyes and bolts of lightning from his arse. I am William Wallace. And I see a whole army of my countrymen here in defiance of tyranny. You have come to fight as free men, and free men you are. What would you do without freedom? Will you fight? Veteran soldier: Fight? Against that? No, we will run; and we will live. Wallace: Aye, fight and you may die. Run and youll live at least a while. And dying in your beds many years from now, would you be willing to trade all the days from this day to that for one chance, just one chance to come back here and tell our enemies that they may take our lives, but theyll never take our freedom!!!
+',100,100),
+('https://www.youtube.com/embed/9t1IK_9apWs','Independence Day Speech','Good morning. In less than an hour, aircraft from here will join others from around the world. And you will be launching the largest aerial battle in this history of mankind. Mankind -- that word should have new meaning for all of us today. We cant be consumed by our petty differences anymore. We will be united in our common interests. Perhaps its fate that today is the 4th of July, and you will once again be fighting for our freedom, not from tyranny, oppression, or persecution -- but from annihilation. Were fighting for our right to live, to exist. And should we win the day, the 4th of July will no longer be known as an American holiday, but as the day when the world declared in one voice "We will not go quietly into the night! We will not vanish without a fight! We are going to live on! We are going to survive!"
+',100,100),
+('https://www.youtube.com/embed/mk82j1jQw_8','Rocky Balboa Winning Speech','Let me tell you something you already know. The world ain’t all sunshine and rainbows. It’s a very mean and nasty place and I don’t care how tough you are it will beat you to your knees and keep you there permanently if you let it. You, me, or nobody is gonna hit as hard as life. But it ain’t about how hard ya hit. It’s about how hard you can get hit and keep moving forward. How much you can take and keep moving forward. That’s how winning is done! Now if you know what you’re worth then go out and get what you’re worth. But ya gotta be willing to take the hits, and not pointing fingers saying you ain’t where you wanna be because of him, or her, or anybody! Cowards do that and that ain’t you! You’re better than that!',100,100),
+('https://www.youtube.com/embed/tdmyoMe4iHM','Herb Brooks Miracle Speech','Great moments are born from great opportunity. And that’s what you have here tonight, boys. That’s what you have earned here, tonight. One game. If we played ‘em ten times they might win nine. But not this game. Not tonight. Tonight, we skate with ‘em. Tonight, we stay with ‘em, and we shut them down because we can! Tonight, we are the greatest hockey team in the world. You were born to be hockey players — every one of ya. This is your time. Their time — is done. It’s over. I’m sick and tired of hearing about what a great hockey team the Soviets have. Screw them. This is your time!! Now go out there take it
+',100,100),
+('https://www.youtube.com/embed/f1yWSePMqsk','Any Given Sunday Speech','On this team, we fight for that inch On this team, we tear ourselves, and everyone around us to pieces for that inch. We CLAW with our finger nails for that inch. Cause we know when we add up all those inches that is going to make the fucking difference between WINNING and LOSING between LIVING and DYING.
+',100,100),
+('https://www.youtube.com/embed/ypx1Stz8zN0','Scent of A Woman Speech','I am not a judge or jury. But I can tell you this: he wont sell anybody out to buy his future!! And that, my friends, is called integrity! That is called courage! Now that is the stuff leaders should be made of. Now I have come to the crossroads in my life. I always knew what the right path was. Without exception, I knew. But I never took it. You know why? It was too damn hard. Now here is Charlie. He has come to the crossroads. He has chosen a path. It is the right path. It is a path made of principle -- that leads to character. Let him continue on his journey.
+',100,100),
+('https://www.youtube.com/embed/vi0Lbjs5ECI','Carpe Diem Speech','Gather ye rosebuds while ye may. The latin term for that sentiment is Carpe Diem. Now who knows what that means? Carpe Diem. That’s ‘Seize the day.’ Gather ye rosebuds while ye may. Why does the writer use these lines…. Because we are food for the worms lads. Because believe it or not, each and every one of us in this room is one day going to stop breathing, turn cold, and die. Now I would like you to step forward over here and peruse some of the faces from the past. You have walked past them many times. I don’t think you’ve really looked at them. They’re not very different from you, are they? Same haircuts. Full of hormones, just like you. Invincible, just like you feel. The world is their oyster. They believe they’re destined for great things, just like many of you. Their eyes are full of hope just like you. Did they wait until it was too late to make from their live even one iota of what they were capable? Because you see, gentlemen, these boys are now fertilising daffodils. But if you listen real close, you can hear them whisper their legacy to you. Go on, Lean in. Listen… Do you hear it? (whispers) Carpe. (whispers again) Cape. Carpe Diem. Seize the day boys, make your lives extraordinary.
+',100,100),
+('https://www.youtube.com/embed/Qoh3YkxuwVo','Rudy Regret Speech','Since when are you the quitting kind?…So you didn’t make the dress list. There are greater tragedies in the world…Oh, you are so full of crap. You’re 5 feet nothin’, a 100 and nothin’, and you got hardly a speck of athletic ability. And you hung in with the best college football team in the land for two years. And you’re also gonna walk outta here with a degree from the University of Notre Dame. In this lifetime, you don’t have to prove nothin’ to nobody – except yourself. And after what you’ve gone through, if you haven’t done that by now, it ain’t gonna never happen. Now go on back… Hell, I’ve seen too many games in this stadium…I’ve never seen a game from the stands…I rode the bench for two years. Thought I wasn’t bein’ played because of my color. I got filled up with a lotta attitude. So I quit. Still not a week goes by I don’t regret it. And I guarantee a week won’t go by in your life you won’t regret walkin’ out, letting them get the best of ya. You hear me clear enough?
+',100,100),
+('https://www.youtube.com/embed/46GwJbrMghQ','Busy Living or Dying Shawshank','Yeah. Right. That’s the way it is. It’s down there and I’m in here. I guess it comes down to a simple choice really. Get busy living or get busy dying.”I guess it comes down to a simple choice really…',100,100);
