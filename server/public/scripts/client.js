@@ -55,5 +55,19 @@ myApp.controller('GalleryController', ['$http', function ($http) {
             
     })
 }
- 
+self.addView = function (id) {
+    console.log('addView')
+    console.log(self.repeatData[id-1].localData.viewcount)
+    self.repeatData[id-1].localData.viewcount +=1
+    console.log({likes: self.repeatData[id-1].localData.viewcount})
+    $http({
+        method: 'PUT',
+        url: '/videos/view/'+id,
+        data: {viewcount: self.repeatData[id-1].localData.viewcount}
+    }).then(function (response) {
+        console.log('response', response)
+        
+})
+}
+
 }]);

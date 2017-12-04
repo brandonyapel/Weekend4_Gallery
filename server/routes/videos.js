@@ -59,4 +59,31 @@ router.put('/like/:id', function (req, res) {
         }
     });
 });
+
+router.put('/view/:id', function (req, res) {
+    console.log(req.body);
+    var videoToView = req.params.id;
+    // Attempt to connect to database
+    pool.connect(function (errorConnectingToDatabase, client, done) {
+        if (errorConnectingToDatabase) {
+            // There was an error connecting to the database
+            console.log('Error connecting to database', errorConnectingToDatabase);
+            res.sendStatus(500);
+        } else {
+            // We connected to the database!!!
+            // Now, we're going to GET things from thd DB
+            client.query(`UPDATE videos SET viewcount=$1 WHERE id=$2;`, [req.body.viewcount, videoToView], function (errorMakingQuery, result) {
+                done();
+                if (errorMakingQuery) {
+                    // Query failed. Did you test it in Postico?
+                    // Log the error
+                    console.log('Error making query', errorMakingQuery);
+                    res.sendStatus(500);
+                } else {
+                    res.sendStatus(200);
+                }
+            });
+        }
+    });
+});
 module.exports = router;

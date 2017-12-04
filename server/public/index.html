@@ -38,7 +38,7 @@
                 <div ng-if="video.localData.display" class="animate-if">
                         <input type="checkbox" ng-model="video.localData.display" ng-init="checked=false" />
                     <div>
-                        <a  href="{{'https://www.youtube.com/embed/'+video.youtubeData.snippet.resourceId.videoId}}">{{video.localData.name}}</a>
+                        <a ng-click="vm.addView(video.localData.id)"  href="{{'https://www.youtube.com/embed/'+video.youtubeData.snippet.resourceId.videoId}}">{{video.localData.name}}</a>
                         <!-- <button type="button" class="btn btn-default btn-sm">
                             <span class="glyphicon glyphicon-remove-circle floatRight"></span>
                         </button> -->
